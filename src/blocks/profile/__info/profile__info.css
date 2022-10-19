@@ -1,0 +1,31 @@
+.profile__info {
+  display: grid;
+  grid-template-columns: auto 24px;
+  grid-template-areas: "profile__name profile__edit-Button"
+                       "profile__job .";
+  row-gap: 16px;
+  column-gap: 18px;
+  align-items: end;
+  margin-left: 30px;
+  max-width: 430px;
+}
+
+@media screen and (max-width: 980px) {
+  .profile__info {
+    grid-template-columns: auto 18px;
+    justify-content: flex-start;
+    column-gap: 10px;
+    margin-left: 14px;
+    margin: 26px 0 33px;
+    padding-left: 19px;
+    row-gap: 6px;
+    max-width: 200px;
+  } 
+}
+
+@media screen and (max-width: 768px) {
+  .profile__info {
+    max-width: 250px;
+    text-align: center;
+  } 
+}

@@ -1,0 +1,13 @@
+.profile__avatar {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+}
+
+.profile__avatar:hover .profile__overlay {
+  background-color: rgb(0, 0, 0, .7);
+  opacity: 1;
+}

@@ -1,0 +1,12 @@
+.cards__image {
+  width: 100%;
+  min-height: 282px;
+  max-height: 282px;
+  vertical-align: top;
+  transition: .3s;
+  object-fit: cover;
+}
+
+.cards__image:hover {
+  opacity: 0.85;
+}
