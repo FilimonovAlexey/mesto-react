@@ -3,16 +3,23 @@ class Api {
     this._options = options;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json(); 
+    }
+      return Promise.reject(res.status);
+  }
+
   getProfile() {
     return fetch(`${this._options.baseUrl}/users/me`, {
       headers: this._options.headers,
-    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+    }).then(this._checkResponse);
   }
 
   getCards() {
     return fetch(`${this._options.baseUrl}/cards`, {
       headers: this._options.headers,
-    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+    }).then(this._checkResponse);
   }
 
   editProfile(data) {
@@ -23,7 +30,7 @@ class Api {
         name: data.name,
         about: data.job,
       }),
-    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+    }).then(this._checkResponse);
   }
 
   addCard(data) {
@@ -34,28 +41,28 @@ class Api {
         name: data.name,
         link: data.link,
       }),
-    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+    }).then(this._checkResponse);
   }
 
   deleteCard(cardId) {
     return fetch(`${this._options.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._options.headers,
-    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+    }).then(this._checkResponse);
   }
 
   addLike(cardId) {
     return fetch(`${this._options.baseUrl}/cards/${cardId}/likes `, {
       method: "PUT",
       headers: this._options.headers,
-    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+    }).then(this._checkResponse);
   }
 
   deleteLike(cardId) {
     return fetch(`${this._options.baseUrl}/cards/${cardId}/likes `, {
       method: "DELETE",
       headers: this._options.headers,
-    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+    }).then(this._checkResponse);
   }
 
   changeAvatar(avatarLink) {
@@ -65,7 +72,7 @@ class Api {
       body: JSON.stringify({
         avatar: avatarLink,
       }),
-    }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+    }).then(this._checkResponse);
   }
 }
 
