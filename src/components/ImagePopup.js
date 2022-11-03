@@ -1,6 +1,33 @@
 import popupIcon from "../images/Close_Icon.svg";
+import { useEffect } from "react";
 
 function ImagePopup({ card, onClose }) {
+  useEffect(() => {
+    if (!card.src) {
+      return;
+    }
+
+    function hundleEsc(evt) {
+      if (evt.key === "Escape") {
+        onClose();
+      }
+    }
+
+    function hundleClick(evt) {
+      if (evt.target.classList.contains("popup_opened")) {
+        onClose();
+      }
+    }
+
+    document.addEventListener("keydown", hundleEsc);
+    document.addEventListener("click", hundleClick);
+
+    return () => {
+      document.removeEventListener("keydown", hundleEsc);
+      document.removeEventListener("click", hundleClick);
+    };
+  }, [card.src]);
+
   return (
     <div className={`popup  ${card.src && "popup_opened"}`}>
       <div className="popup__container-image">
