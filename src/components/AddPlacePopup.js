@@ -23,7 +23,6 @@ function AddPlacePopup(props) {
     setCardLink("");
   }, [props.isOpen]);
 
-
   return (
     <PopupWithForm
       name="add-card"

@@ -3,7 +3,6 @@ import Card from "./Card";
 import AvatarIcon from "../images/avatar_edit.png";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-
 function Main(props) {
   const currentUser = useContext(CurrentUserContext);
 
